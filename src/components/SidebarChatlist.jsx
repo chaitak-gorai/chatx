@@ -29,7 +29,6 @@ const SidebarChatList = ({ friends, sessionId }) => {
       console.log(pathname)
       if (!shouldNotify) return
 
-      // should be notified
       console.log('should be notified')
       toast.custom((t) => (
         <UnseenChatToast
