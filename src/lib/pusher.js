@@ -5,9 +5,9 @@ console.log(process.env.NEXT_PUBLIC_PUSHER_APP_KEY)
 var Pusher = require('pusher')
 
 export var pusherServer = new Pusher({
-  appId: '1664349',
-  key: '3fab6959c418009c6572',
-  secret: '6d11bae8dba3d0fb8b3c',
+  appId: process.env.PUSHER_APP_ID,
+  key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY,
+  secret: process.env.PUSHER_SECRET,
   cluster: 'ap2',
 })
 
