@@ -10,7 +10,6 @@ import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOption
 import { fetchRedis } from '@/helpers/redis'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import SidebarChatList from '@/components/SidebarChatList'
-import MobileChatLayout from '@/components/MobileChatLayout'
 
 // Done after the video and optional: add page metadata
 export const metadata = {
