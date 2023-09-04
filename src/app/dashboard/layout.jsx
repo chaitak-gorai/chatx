@@ -9,7 +9,7 @@ import { FC, ReactNode } from 'react'
 import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions'
 import { fetchRedis } from '@/helpers/redis'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
-import SidebarChatList from '@/components/SidebarChatList'
+import SidebarChatList from '@/components/SidebarChatlist'
 
 // Done after the video and optional: add page metadata
 export const metadata = {
