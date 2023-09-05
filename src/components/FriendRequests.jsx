@@ -15,7 +15,6 @@ const FriendRequests = ({ incomingFriendRequests, sessionId }) => {
     pusherClient.subscribe(
       toPusherKey(`user:${sessionId}:incoming_friend_requests`)
     )
-    console.log('listening to ', `user:${sessionId}:incoming_friend_requests`)
 
     const friendRequestHandler = ({ senderId, senderEmail }) => {
       setFriendRequests((prev) => [...prev, { senderId, senderEmail }])

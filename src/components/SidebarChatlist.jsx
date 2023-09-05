@@ -26,10 +26,8 @@ const SidebarChatList = ({ friends, sessionId }) => {
         pathname !==
         `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`
 
-      console.log(pathname)
       if (!shouldNotify) return
 
-      console.log('should be notified')
       toast.custom((t) => (
         <UnseenChatToast
           t={t}
