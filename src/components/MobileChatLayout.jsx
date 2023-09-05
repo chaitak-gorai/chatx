@@ -9,7 +9,7 @@ import { Icons } from './Icons'
 import SignOutButton from './SignOutButton'
 import Button, { buttonVariants } from './ui/Button'
 import FriendRequestSidebarOptions from './FriendRequestSidebarOptions'
-import SidebarChatList from './SidebarChatList'
+import SidebarChatList from './SidebarChatlist'
 import { Session } from 'next-auth'
 
 import { usePathname } from 'next/navigation'
