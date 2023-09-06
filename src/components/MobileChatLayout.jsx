@@ -35,7 +35,7 @@ const MobileChatLayout = ({
           href='/dashboard'
           className={buttonVariants({ variant: 'ghost' })}
         >
-          <Icons.Logo className='h-6 w-auto text-indigo-600' />
+          <Image src='/chatxlogo.svg' width={100} height={100} alt='logo' />
         </Link>
         <Button onClick={() => setOpen(true)} className='gap-4'>
           Menu <Menu className='h-6 w-6' />

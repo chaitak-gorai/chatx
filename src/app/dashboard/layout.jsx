@@ -14,7 +14,7 @@ import MobileChatLayout from '@/components/MobileChatLayout'
 
 // Done after the video and optional: add page metadata
 export const metadata = {
-  title: 'FriendZone | Dashboard',
+  title: 'ChatX | Dashboard',
   description: 'Your dashboard',
 }
 
@@ -50,11 +50,11 @@ const Layout = async ({ children }) => {
           unseenRequestCount={unseenRequestCount}
         />
       </div>
-      <div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6'>
-        <Link href='/dashboard' className='flex h-16 shrink-0 items-center'>
-          <Icons.Logo className='h-8 w-auto text-indigo-600' />
-        </Link>
 
+      <div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6'>
+        <Link href='/dashboard' className='flex justify-start items-start'>
+          <Image src='/chatxlogo.svg' width={100} height={100} alt='logo' />
+        </Link>
         {friends.length > 0 ? (
           <div className='text-xs font-semibold leading-6 text-gray-400'>
             Your chats
