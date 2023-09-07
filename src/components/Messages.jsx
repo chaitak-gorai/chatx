@@ -1,8 +1,8 @@
 'use client'
-
 import { pusherClient, pusherServer } from '@/lib/pusher'
 import { cn, toPusherKey } from '@/lib/utils'
 import { Message } from '@/lib/validations/message'
+
 import axios from 'axios'
 import { format } from 'date-fns'
 import Image from 'next/image'
@@ -17,14 +17,21 @@ const Messages = ({
 }) => {
   const [messages, setMessages] = useState(initialMessages)
 
-  async function handleOnline() {
-    const res = await axios.post('/api/online', { id: sessionId })
-    console.log(res, 'res')
-  }
   useEffect(() => {
-    handleOnline()
-  }, [])
+    async function handleOnlineStatus(userId, status) {
+      const { data } = await axios.post('/api/status', {
+        id: userId,
+        status: status,
+      })
+      console.log(data)
+    }
 
+    handleOnlineStatus(sessionId, 'online')
+
+    return () => {
+      handleOnlineStatus(sessionId, 'offline')
+    }
+  }, [sessionId, messages])
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
 
