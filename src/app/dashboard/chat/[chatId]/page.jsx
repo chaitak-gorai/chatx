@@ -7,8 +7,10 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 import Image from 'next/image'
 import ChatInput from '@/components/ChatInput'
-import axios from 'axios'
+
 import ExportChatButton from '@/components/ExportChatButton'
+import { Online } from '@/components/Online'
+
 async function getChatMessages(chatId) {
   try {
     const results = await fetchRedis('zrange', `chat:${chatId}:messages`, 0, -1)
@@ -70,6 +72,7 @@ const page = async ({ params }) => {
 
             <span className='text-sm text-gray-600'>{chatPartner.email}</span>
           </div>
+          <Online userId={chatPartnerId} />
         </div>
         <ExportChatButton chatId={chatId} />
       </div>
@@ -81,7 +84,7 @@ const page = async ({ params }) => {
         sessionId={session.user.id}
         initialMessages={initialMessages}
       />
-      <ChatInput chatId={chatId} chatPartner={chatPartner} />
+      <ChatInput chatPartner={chatPartner} chatId={chatId} />
     </div>
   )
 }

@@ -1,8 +1,9 @@
 'use client'
 
-import { pusherClient } from '@/lib/pusher'
+import { pusherClient, pusherServer } from '@/lib/pusher'
 import { cn, toPusherKey } from '@/lib/utils'
 import { Message } from '@/lib/validations/message'
+import axios from 'axios'
 import { format } from 'date-fns'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -16,6 +17,14 @@ const Messages = ({
 }) => {
   const [messages, setMessages] = useState(initialMessages)
 
+  async function handleOnline() {
+    const res = await axios.post('/api/online', { id: sessionId })
+    console.log(res, 'res')
+  }
+  useEffect(() => {
+    handleOnline()
+  }, [])
+
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
 
@@ -27,9 +36,10 @@ const Messages = ({
 
     return () => {
       pusherClient.unsubscribe(toPusherKey(`chat:${chatId}`))
+
       pusherClient.unbind('incoming-message', messageHandler)
     }
-  }, [chatId])
+  }, [chatId, sessionId])
 
   const scrollDownRef = useRef(null)
 
